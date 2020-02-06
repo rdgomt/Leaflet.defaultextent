@@ -71,7 +71,7 @@ return (function () {
     },
     _zoomToDefault: function () {
       if (this._bounds) {
-        this._map.flyToBounds(this._bounds, { duration: 1 })
+        this._map.flyToBounds(this._bounds)
       } else {
         this._map.setView(this._center, this._zoom);
       }
