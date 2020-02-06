@@ -20,6 +20,10 @@
       this._zoom = zoom;
       return this;
     },
+    setBounds: function (bounds) {
+      this._bounds = bounds;
+      return this;
+    },
     _initLayout: function () {
       var container = L.DomUtil.create('div', 'leaflet-bar ' +
         this.options.className);
@@ -55,7 +59,11 @@
       return this;
     },
     _zoomToDefault: function () {
-      this._map.setView(this._center, this._zoom);
+      if (this._bounds) {
+        this._map.flyToBounds(this._bounds, { duration: 1 })
+      } else {
+        this._map.setView(this._center, this._zoom);
+      }
     }
   });
 
